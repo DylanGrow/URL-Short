@@ -1,6 +1,7 @@
 name = "urlshortner"
 main = "src/index.js"
 compatibility_date = "2026-05-18"
+account_id = "08dd32e65e381e896f22484931b5081e"
 
 [[d1_databases]]
 binding = "DB"

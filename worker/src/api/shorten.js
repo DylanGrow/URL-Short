@@ -79,7 +79,16 @@ export async function handleShorten(request, env) {
 
     } catch (e) {
         console.error('Shorten API Error:', e);
-        return new Response(JSON.stringify({ error: 'Bad Request' }), { status: 400 });
+        return new Response(JSON.stringify({ 
+            error: e.message || 'Bad Request',
+            stack: e.stack
+        }), { 
+            status: 400,
+            headers: { 
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
+            }
+        });
     }
 }
 

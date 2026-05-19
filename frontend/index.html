@@ -2,6 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <script>
+        // Prevent path resolution quirks by enforcing trailing slash on subfolder access
+        if (window.location.pathname.endsWith('/frontend')) {
+            window.location.replace(window.location.pathname + '/');
+        }
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SecureLink | Minimalist URL Shortener</title>
     <meta name="description" content="A production-grade, secure, and lightning-fast URL shortener built for the edge.">

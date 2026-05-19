@@ -1,6 +1,6 @@
 // API configuration
 // NOTE: Change this to your deployed worker URL
-const API_URL = 'https://api.yourdomain.com/api/shorten';
+const API_URL = 'https://urlshortner.dylangrow.workers.dev/api/shorten';
 
 document.addEventListener('DOMContentLoaded', () => {
     // Set footer year

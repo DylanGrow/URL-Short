@@ -49,7 +49,7 @@
                 
                 <div class="input-group">
                     <label for="customSlug" class="sr-only">Custom Slug (Optional)</label>
-                    <input type="text" id="customSlug" name="slug" placeholder="Custom slug (optional)" pattern="[a-zA-Z0-9_-]{3,32}" title="3-32 characters, letters, numbers, hyphens, and underscores only" autocomplete="off">
+                    <input type="text" id="customSlug" name="slug" placeholder="Custom slug (optional)" pattern="[a-zA-Z0-9_\-]{3,32}" title="3-32 characters, letters, numbers, hyphens, and underscores only" autocomplete="off">
                 </div>
 
                 <!-- Turnstile Widget (Replace sitekey) -->
@@ -71,6 +71,34 @@
             </div>
 
             <div id="errorContainer" class="error-container hidden" aria-live="assertive"></div>
+        </section>
+
+        <!-- Futuristic Stats Dashboard -->
+        <section class="stats-dashboard">
+            <div class="stat-card">
+                <div class="stat-glow indigo"></div>
+                <span class="stat-value">12ms</span>
+                <span class="stat-label">
+                    <span class="status-dot online"></span> 
+                    Global Latency
+                </span>
+            </div>
+            <div class="stat-card">
+                <div class="stat-glow purple"></div>
+                <span class="stat-value">99.99%</span>
+                <span class="stat-label">
+                    <span class="status-dot online"></span> 
+                    Edge Uptime
+                </span>
+            </div>
+            <div class="stat-card">
+                <div class="stat-glow emerald"></div>
+                <span class="stat-value">D1 Active</span>
+                <span class="stat-label">
+                    <span class="status-dot database"></span> 
+                    Storage Ring
+                </span>
+            </div>
         </section>
     </main>
 

@@ -403,6 +403,110 @@ button[type="submit"]:hover .btn-icon {
     background: rgba(255, 255, 255, 0.25);
 }
 
+/* Futuristic Stats Dashboard */
+.stats-dashboard {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    margin-top: 2.5rem;
+}
+
+.stat-card {
+    position: relative;
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 
+        0 10px 30px -10px rgba(0, 0, 0, 0.5),
+        inset 0 1px 1px rgba(255, 255, 255, 0.05);
+    transition: all var(--transition-bounce);
+    overflow: hidden;
+}
+
+.stat-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--border-hover);
+    box-shadow: 
+        0 15px 35px -10px rgba(99, 102, 241, 0.15),
+        inset 0 1px 1px rgba(255, 255, 255, 0.08);
+}
+
+.stat-glow {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    filter: blur(30px);
+    opacity: 0.15;
+    top: -20px;
+    pointer-events: none;
+}
+
+.stat-glow.indigo { background-color: var(--accent-primary); }
+.stat-glow.purple { background-color: var(--accent-secondary); }
+.stat-glow.emerald { background-color: var(--accent-success); }
+
+.stat-value {
+    font-family: var(--font-heading);
+    font-size: 1.65rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.35rem;
+    text-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
+}
+
+.stat-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+
+.status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    position: relative;
+}
+
+.status-dot.online {
+    background-color: var(--accent-success);
+    box-shadow: 0 0 10px var(--accent-success);
+    animation: pulse-green 2s infinite;
+}
+
+.status-dot.database {
+    background-color: var(--accent-primary);
+    box-shadow: 0 0 10px var(--accent-primary);
+    animation: pulse-blue 2s infinite;
+}
+
+@keyframes pulse-green {
+    0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+    70% { box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+@keyframes pulse-blue {
+    0% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.7); }
+    70% { box-shadow: 0 0 0 6px rgba(99, 102, 241, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0); }
+}
+
 /* Responsive Scaling */
 @media (max-width: 480px) {
     body {
@@ -431,5 +535,11 @@ button[type="submit"]:hover .btn-icon {
     .copy-group button {
         width: 100%;
         padding: 1rem;
+    }
+
+    .stats-dashboard {
+        grid-template-columns: 1fr;
+        gap: 0.875rem;
+        margin-top: 1.75rem;
     }
 }

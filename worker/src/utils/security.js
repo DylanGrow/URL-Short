@@ -13,6 +13,11 @@ export function addSecurityHeaders(response) {
     // Permissions Policy
     newHeaders.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=(), payment=()');
 
+    // Add CORS headers if not already present
+    if (!newHeaders.has('Access-Control-Allow-Origin')) {
+        newHeaders.set('Access-Control-Allow-Origin', '*');
+    }
+
     return new Response(response.body, {
         status: response.status,
         statusText: response.statusText,

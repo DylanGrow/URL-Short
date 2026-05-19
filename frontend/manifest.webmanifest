@@ -2,7 +2,7 @@
   "name": "SecureLink Shortener",
   "short_name": "SecureLink",
   "description": "Fast and secure URL shortener",
-  "start_url": "/",
+  "start_url": ".",
   "display": "standalone",
   "background_color": "#0f0f0f",
   "theme_color": "#121212",

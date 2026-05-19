@@ -2,18 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-width=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SecureLink | Minimalist URL Shortener</title>
     <meta name="description" content="A production-grade, secure, and lightning-fast URL shortener built for the edge.">
     <meta name="theme-color" content="#121212">
-    <link rel="manifest" href="/manifest.webmanifest">
+    <link rel="manifest" href="manifest.webmanifest">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%23ffffff'/%3E%3Cpath d='M30 50h40M50 30v40' stroke='%23121212' stroke-width='10' stroke-linecap='round'/%3E%3C/svg%3E">
     
     <!-- Security Headers implemented via meta for GitHub Pages static hosting where server headers aren't fully configurable -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://challenges.cloudflare.com; frame-src 'self' https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://urlshortner.dylangrow.workers.dev https://challenges.cloudflare.com https://* http://localhost:*; object-src 'none'; base-uri 'none'; frame-ancestors 'none';">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://challenges.cloudflare.com; frame-src 'self' https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://urlshortner.dylangrow.workers.dev https://challenges.cloudflare.com https://* http://localhost:*; object-src 'none'; base-uri 'none';">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="style.css">
     
     <!-- Preconnect to the live API origin -->
     <link rel="preconnect" href="https://urlshortner.dylangrow.workers.dev">
@@ -75,6 +75,6 @@
         </div>
     </footer>
 
-    <script src="/app.js" defer></script>
+    <script src="app.js" defer></script>
 </body>
 </html>

@@ -1,10 +1,10 @@
 const CACHE_NAME = 'securelink-v1';
 const ASSETS = [
-  '/',
-  '/index.html',
-  '/style.css',
-  '/app.js',
-  '/manifest.webmanifest'
+  './',
+  'index.html',
+  'style.css',
+  'app.js',
+  'manifest.webmanifest'
 ];
 
 self.addEventListener('install', (event) => {

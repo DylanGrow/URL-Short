@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-width=1.0">
+    <title>SecureLink | Minimalist URL Shortener</title>
+    <meta name="description" content="A production-grade, secure, and lightning-fast URL shortener built for the edge.">
+    <meta name="theme-color" content="#121212">
+    <link rel="manifest" href="/manifest.webmanifest">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%23ffffff'/%3E%3Cpath d='M30 50h40M50 30v40' stroke='%23121212' stroke-width='10' stroke-linecap='round'/%3E%3C/svg%3E">
+    
+    <!-- Security Headers implemented via meta for GitHub Pages static hosting where server headers aren't fully configurable -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://* http://localhost:*; object-src 'none'; base-uri 'none'; frame-ancestors 'none';">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    
+    <link rel="stylesheet" href="/style.css">
+    
+    <!-- Preconnect to likely API origin (modify in prod) -->
+    <!-- <link rel="preconnect" href="https://api.yourdomain.com"> -->
+    
+    <!-- Cloudflare Turnstile -->
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+</head>
+<body>
+    <header class="app-header">
+        <div class="container">
+            <svg class="logo-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+            <h1>SecureLink</h1>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <h2>Edge-Powered Link Management</h2>
+            <p>Secure, fast, and privacy-respecting URLs.</p>
+        </section>
+
+        <section class="shortener-panel">
+            <form id="shortenForm" aria-label="Shorten URL form">
+                <div class="input-group">
+                    <label for="targetUrl" class="sr-only">Target URL</label>
+                    <input type="url" id="targetUrl" name="url" placeholder="https://very-long-url.com/..." required aria-required="true" autocomplete="off">
+                </div>
+                
+                <div class="input-group">
+                    <label for="customSlug" class="sr-only">Custom Slug (Optional)</label>
+                    <input type="text" id="customSlug" name="slug" placeholder="Custom slug (optional)" pattern="[a-zA-Z0-9_-]{3,32}" title="3-32 characters, letters, numbers, hyphens, and underscores only" autocomplete="off">
+                </div>
+
+                <!-- Turnstile Widget (Replace sitekey) -->
+                <div class="cf-turnstile" data-sitekey="1x00000000000000000000AA" data-theme="dark"></div>
+
+                <button type="submit" id="submitBtn">
+                    <span class="btn-text">Shorten URL</span>
+                    <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </button>
+            </form>
+
+            <div id="resultContainer" class="result-container hidden" aria-live="polite">
+                <!-- Results injected here safely via textContent -->
+                <p>Your short link:</p>
+                <div class="copy-group">
+                    <input type="text" id="resultUrl" readonly aria-label="Generated short URL">
+                    <button type="button" id="copyBtn" aria-label="Copy to clipboard">Copy</button>
+                </div>
+            </div>
+
+            <div id="errorContainer" class="error-container hidden" aria-live="assertive"></div>
+        </section>
+    </main>
+
+    <footer class="app-footer">
+        <div class="container">
+            <p>&copy; <span id="year"></span> SecureLink Platform. Brutally minimal.</p>
+        </div>
+    </footer>
+
+    <script src="/app.js" defer></script>
+</body>
+</html>

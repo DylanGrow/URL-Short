@@ -1,0 +1,8 @@
+name = "urlshortner"
+main = "src/index.js"
+compatibility_date = "2026-05-18"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "prod-url-db"
+database_id = "5b818ee6-f93d-4d1f-b162-b17821bb6b58"

@@ -182,11 +182,10 @@ document.addEventListener('DOMContentLoaded', () => {
         
         try {
             // Fetch fresh database from GitHub content to avoid caching latency
-            const res = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/${DB_PATH}`, {
+            const res = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/${DB_PATH}?t=${Date.now()}`, {
                 headers: {
                     'Authorization': `token ${githubToken}`,
-                    'Accept': 'application/vnd.github.v3.raw',
-                    'Cache-Control': 'no-cache'
+                    'Accept': 'application/vnd.github.v3.raw'
                 }
             });
             if (!res.ok) throw new Error('Database fetch failed');
@@ -444,8 +443,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const res = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/${DB_PATH}?t=${Date.now()}`, {
             headers: {
                 'Authorization': `token ${githubToken}`,
-                'Accept': 'application/vnd.github.v3+json',
-                'Cache-Control': 'no-cache'
+                'Accept': 'application/vnd.github.v3+json'
             }
         });
         if (!res.ok) throw new Error('Could not fetch links database files metadata from GitHub.');

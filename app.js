@@ -476,7 +476,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Local validator matching target pattern
     function validateSlug(slug) {
-        const slugRegex = /^[a-zA-Z0-9_-]{3,32}$/;
+        const slugRegex = /^[a-zA-Z0-9\-_]{3,32}$/;
         if (!slugRegex.test(slug)) return false;
 
         const reserved = new Set([
@@ -516,7 +516,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Register Service Worker for PWA support
     if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
+        window.addEventListener('load', async () => {
+            // First clear any existing stubborn Service Workers
+            const regs = await navigator.serviceWorker.getRegistrations();
+            for (let reg of regs) {
+                await reg.unregister();
+            }
+            
+            // Register the new patched version
             navigator.serviceWorker.register('./sw.js')
                 .then((reg) => console.log('Service Worker registered:', reg.scope))
                 .catch((err) => console.error('Service Worker registration failed:', err));

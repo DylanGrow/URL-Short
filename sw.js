@@ -1,4 +1,4 @@
-const CACHE_NAME = 'securelink-v1';
+const CACHE_NAME = 'securelink-v2';
 const ASSETS = [
   './',
   './index.html',
@@ -39,7 +39,6 @@ self.addEventListener('fetch', (e) => {
 
   // Bypass cache for GitHub API requests and database changes to ensure fresh data
   if (url.hostname.includes('api.github.com') || url.pathname.includes('db.json')) {
-    e.respondWith(fetch(e.request));
     return;
   }
 
